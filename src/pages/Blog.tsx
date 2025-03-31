@@ -104,13 +104,14 @@ const Blog: React.FC = () => {
       {/* Search and Filter */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <div className="relative flex-grow">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
+         
           <Input
             placeholder="Search articles..."
             className="pl-10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+           <Search className="left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
         </div>
         <div className="flex flex-wrap gap-2">
           <Button 

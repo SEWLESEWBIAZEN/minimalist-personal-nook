@@ -10,13 +10,13 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} YourName. All rights reserved.
+              © {new Date().getFullYear()} Sewlesew. All rights reserved.
             </p>
           </div>
           
           <div className="flex space-x-6">
             <a 
-              href="https://github.com" 
+              href="https://github.com/SEWLESEWBIAZEN" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
               <Github size={20} />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://linkedin.com/in/sewlesew-biazen-sfd" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"

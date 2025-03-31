@@ -22,7 +22,7 @@ const Index: React.FC = () => {
         <div className="container-content text-center md:text-left">
           <div className="max-w-3xl mx-auto md:mx-0">
             <h1 className="mb-4 animate-slide-in">
-              Hi, I'm <span className="text-primary">Your Name</span>.
+              Hi, I'm <span className="text-primary">Sewlesew</span>.
               <br />
               I build things for the web.
             </h1>

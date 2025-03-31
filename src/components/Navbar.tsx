@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
           to="/" 
           className="font-bold text-xl tracking-tight hover:text-primary transition-colors"
         >
-          YourName
+          Sewlesew
         </Link>
         
         {/* Desktop navigation */}

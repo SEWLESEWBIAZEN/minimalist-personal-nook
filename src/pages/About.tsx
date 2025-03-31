@@ -6,36 +6,37 @@ import { Button } from '@/components/ui/button';
 const About: React.FC = () => {
   const experiences = [
     {
-      role: 'Senior Frontend Developer',
-      company: 'Tech Company',
-      period: '2021 - Present',
-      description: 'Led the development of the company\'s main product, improving performance by 40%. Collaborated with designers and backend teams to implement new features.'
+      role: 'Software(Fullstack) Developer',
+      company: 'Ethiopian Airlines',
+      period: 'April 2024 - Present',
+      description: 'Collaborate with the senior development teams of the company\'s main product, improving performance by 40%. Collaborated with designers and work in both frontend and backend to implement new features.'
     },
     {
-      role: 'Frontend Developer',
-      company: 'Digital Agency',
-      period: '2018 - 2021',
+      role: 'Junior Software(Fullstack) Developer',
+      company: 'ADIB',
+      period: 'December 2003 - April 2024',
       description: 'Built responsive web applications for various clients. Worked with React, Vue.js, and modern CSS frameworks to deliver high-quality user interfaces.'
     },
     {
       role: 'Web Developer Intern',
-      company: 'Startup Inc.',
-      period: '2017 - 2018',
+      company: 'ABA.',
+      period: 'January 2023 - March 2023',
+      description: 'Assisted in building and maintaining company websites. Learned modern web development practices and collaborated in an agile team environment.'
+    },
+    {
+      role: 'Personal Projects',
+      company: 'Self',
+      period: 'January 2021 - July 2023',
       description: 'Assisted in building and maintaining company websites. Learned modern web development practices and collaborated in an agile team environment.'
     }
   ];
 
   const education = [
+   
     {
-      degree: 'Master of Science in Computer Science',
-      institution: 'University Name',
-      period: '2016 - 2018',
-      description: 'Focused on web technologies and user interface design.'
-    },
-    {
-      degree: 'Bachelor of Science in Information Technology',
-      institution: 'University Name',
-      period: '2012 - 2016',
+      degree: 'Bachelor of Science in Computer Science',
+      institution: 'Addis Ababa University',
+      period: '2019 - 2023',
       description: 'Studied programming, data structures, algorithms, and software development methodologies.'
     }
   ];
@@ -47,7 +48,7 @@ const About: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
         <div className="col-span-2">
           <p className="text-lg mb-4">
-            Hello! I'm Your Name, a passionate and creative developer with over 5 years of experience in building web applications. 
+            Hello! I'm <span className="font-semibold"> Sewlesew</span>, a passionate and creative developer with 4+ years of experience in building web applications. 
             I enjoy solving complex problems and turning ideas into reality through elegant and efficient code.
           </p>
           <p className="mb-4">
@@ -59,7 +60,7 @@ const About: React.FC = () => {
             I believe in continuous learning and sharing knowledge with the developer community.
           </p>
           
-          <a href="/path-to-resume.pdf" download className="inline-block">
+          <a href="/resumes/Resume_Sewlesew_Biazen_Updated.PDF" download className="inline-block">
             <Button>Download Resume</Button>
           </a>
         </div>
@@ -72,7 +73,9 @@ const About: React.FC = () => {
               <li>React / Next.js</li>
               <li>HTML5 / CSS3 / Tailwind</li>
               <li>Node.js / Express</li>
+              <li>.Net Core / C#</li>
               <li>Git / GitHub</li>
+              <li>Azure Devops</li>
               <li>UI/UX Design principles</li>
             </ul>
           </div>

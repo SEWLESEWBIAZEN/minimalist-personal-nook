@@ -120,7 +120,7 @@ const Contact: React.FC = () => {
               <div>
                 <h3 className="font-medium mb-1">Email</h3>
                 <a href="mailto:hello@example.com" className="text-muted-foreground hover:text-primary">
-                  hello@example.com
+                  sewlesewbiazen65@gmail.com
                 </a>
               </div>
             </div>
@@ -132,7 +132,7 @@ const Contact: React.FC = () => {
               <div>
                 <h3 className="font-medium mb-1">Phone</h3>
                 <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary">
-                  +1 (234) 567-890
+                  +251 961 718 044
                 </a>
               </div>
             </div>
@@ -144,7 +144,7 @@ const Contact: React.FC = () => {
               <div>
                 <h3 className="font-medium mb-1">Location</h3>
                 <p className="text-muted-foreground">
-                  San Francisco, California
+                  Addis Ababa, Ethiopia
                 </p>
               </div>
             </div>
@@ -154,7 +154,7 @@ const Contact: React.FC = () => {
             <h3 className="font-medium mb-4">Connect with me</h3>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com" 
+                href="https://github.com/sewlesewbiazen" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-background rounded-full hover:bg-primary/10 transition-colors"
@@ -165,7 +165,7 @@ const Contact: React.FC = () => {
                 </svg>
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://linkedin.com/in/sewlesew-biazen-sfd" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-background rounded-full hover:bg-primary/10 transition-colors"
