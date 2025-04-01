@@ -21,7 +21,7 @@ const App = () => (
     <ThemeProvider>
       <TooltipProvider>
         <Toaster />
-        <Sonner />
+        <Sonner position="top-right" richColors />
         <BrowserRouter>
           <Layout>
             <Routes>

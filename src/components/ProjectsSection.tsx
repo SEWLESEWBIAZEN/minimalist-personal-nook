@@ -10,34 +10,34 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  githubUrl: string;
-  liveUrl: string;
+  githubUrl: string | null;
+  liveUrl: string | null;
 }
 
 const ProjectsSection: React.FC = () => {
   const featuredProjects: Project[] = [
     {
       id: 1,
-      title: 'Personal Portfolio',
-      description: 'A minimalist portfolio website built with React and Tailwind CSS.',
-      tags: ['React', 'Tailwind', 'TypeScript'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com'
+      title: 'LMS Document management System',
+      description: 'A legal office document and task management system for Ethiopian Airlines',
+      tags: ['Next.js', 'ShadeCN', 'React', 'Tailwind', 'TypeScript', '.Net Core', 'MS SQL Server'],
+      githubUrl: null,
+      liveUrl: null
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A productivity application for managing tasks and projects.',
-      tags: ['Next.js', 'Firebase', 'Tailwind'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com'
+      title: 'Bankify',
+      description: 'Banking Application with tracking every transaction.',
+      tags: ['Next.js', 'Tailwind','.Net Core','MS SQL Server'],
+      githubUrl: 'https://github.com/SEWLESEWBIAZEN/Bankiify',
+      liveUrl: 'Not Hosted!'
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'A weather application showing forecasts using weather API.',
-      tags: ['React', 'API', 'ChartJS'],
-      githubUrl: 'https://github.com',
+      title: 'Personal/Portifolio Website',
+      description: 'A website to showcase my works, which is the website you are browsing right now.',
+      tags: ['React', 'API', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/SEWLESEWBIAZEN/minimalist-personal-nook',
       liveUrl: 'https://example.com'
     }
   ];

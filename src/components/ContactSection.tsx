@@ -54,7 +54,7 @@ const ContactSection: React.FC = () => {
                 <div>
                   <h3 className="text-lg font-medium">Email</h3>
                   <a href="mailto:hello@example.com" className="text-muted-foreground hover:text-primary">
-                    hello@example.com
+                    sewlesewbiazen65@gmail.com
                   </a>
                 </div>
               </div>
@@ -66,7 +66,9 @@ const ContactSection: React.FC = () => {
                 <div>
                   <h3 className="text-lg font-medium">Social</h3>
                   <p className="text-muted-foreground">
-                    Find me on <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Twitter</a> or <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">LinkedIn</a>
+                    Find me on 
+                    {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Twitter</a> */}
+                     or <a href="https://linkedin.com/in/sewlesew-biazen-sfd" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">LinkedIn</a>
                   </p>
                 </div>
               </div>

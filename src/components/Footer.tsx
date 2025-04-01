@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
             >
               <Linkedin size={20} />
             </a>
-            <a 
+            {/* <a 
               href="https://twitter.com" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
               aria-label="Twitter"
             >
               <Twitter size={20} />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

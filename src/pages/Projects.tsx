@@ -10,8 +10,8 @@ interface Project {
   description: string;
   tags: string[];
   image: string;
-  githubUrl: string;
-  liveUrl: string;
+  githubUrl: string | null;
+  liveUrl: string | null;
   featured: boolean;
 }
 
@@ -21,31 +21,31 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Personal Portfolio',
-      description: 'A minimalist portfolio website built with React and Tailwind CSS.',
-      tags: ['React', 'Tailwind', 'TypeScript'],
-      image: '/placeholder.svg',
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      title: 'LMS Document management System',
+      description: 'A legal office document and task management system for Ethiopian Airlines',
+      tags: ['Next.js', 'ShadeCN', 'React', 'Tailwind', 'TypeScript'],
+      image:'/images/case-insights.png',
+      githubUrl: null,
+      liveUrl: null,
       featured: true
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A productivity application for managing tasks and projects.',
+      title: 'Bankify',
+      description: 'Banking Application that tracks every records of transaction within the system.',
       tags: ['Next.js', 'Firebase', 'Tailwind'],
-      image: '/placeholder.svg',
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      image: '/images/bankify-placeholder-image.png',
+      githubUrl: 'https://github.com/SEWLESEWBIAZEN/Bankiify',
+      liveUrl: 'Not Hosted!',
       featured: true
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'A weather application showing forecasts using weather API.',
-      tags: ['React', 'API', 'ChartJS'],
-      image: '/placeholder.svg',
-      githubUrl: 'https://github.com',
+      title: 'Personal/Portifolio website',
+      description: 'The wwebsite you are in. Show casing skills, talents and knowledge.',
+      tags: ['React','TypeScript', 'vite', 'Tailwind','API'],
+      image: '/images/portifolio-website-placeholder-image.png',
+      githubUrl: 'https://github.com/SEWLESEWBIAZEN/minimalist-personal-nook',
       liveUrl: 'https://example.com',
       featured: true
     },
@@ -61,19 +61,19 @@ const Projects: React.FC = () => {
     },
     {
       id: 5,
-      title: 'Recipe Finder',
-      description: 'An application to discover and save cooking recipes.',
-      tags: ['JavaScript', 'API', 'CSS'],
-      image: '/placeholder.svg',
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      title: 'Patients Dashboard',
+      description: "A dashboard that shows patient's status.",
+      tags: ['Next.js','Tailwind','TypeScript', 'API', 'CSS'],
+      image: '/images/patients-dashboard-placeholder-image.png',
+      githubUrl: 'https://github.com/SEWLESEWBIAZEN/patients-dashboard',
+      liveUrl: 'https://patients-dashboard-bice.vercel.app/dashboard',
       featured: false
     },
     {
       id: 6,
-      title: 'Budget Tracker',
+      title: 'Expense Tracker Pro',
       description: 'A personal finance tool to track income and expenses.',
-      tags: ['React', 'Firebase', 'ChartJS'],
+      tags: ['Node.js', 'Express.js', 'MongoDB'],
       image: '/placeholder.svg',
       githubUrl: 'https://github.com',
       liveUrl: 'https://example.com',
@@ -128,7 +128,7 @@ const Projects: React.FC = () => {
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover cursor-pointer"
               />
             </div>
             <CardHeader>
@@ -155,7 +155,7 @@ const Projects: React.FC = () => {
                 className="flex items-center hover:text-primary transition-colors"
               >
                 <Github size={16} className="mr-1" />
-                Code
+                { project.githubUrl!==null?"Code":"It is private"}
               </a>
               <a
                 href={project.liveUrl}
@@ -164,7 +164,7 @@ const Projects: React.FC = () => {
                 className="flex items-center hover:text-primary transition-colors"
               >
                 <ExternalLink size={16} className="mr-1" />
-                Live Demo
+                {project.liveUrl!=null? "Live Demo":"It is Private"}
               </a>
             </CardFooter>
           </Card>
