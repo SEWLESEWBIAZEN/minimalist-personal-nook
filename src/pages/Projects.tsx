@@ -42,8 +42,8 @@ const Projects: React.FC = () => {
     {
       id: 3,
       title: 'Personal/Portifolio website',
-      description: 'The wwebsite you are in. Show casing skills, talents and knowledge.',
-      tags: ['React','TypeScript', 'vite', 'Tailwind','API'],
+      description: 'The website you are in. Show casing skills, talents and knowledge.',
+      tags: ['React','TypeScript', 'vite', 'Tailwind','API','Supabase'],
       image: '/images/portifolio-website-placeholder-image.png',
       githubUrl: 'https://github.com/SEWLESEWBIAZEN/minimalist-personal-nook',
       liveUrl: 'https://sewlesewb.netlify.app/',

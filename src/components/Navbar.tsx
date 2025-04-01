@@ -14,7 +14,8 @@ const Navbar: React.FC = () => {
     { name: 'About', href: '/about' },
     { name: 'Projects', href: '/projects' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Contact', href: '/contact' },
+   
   ];
 
   useEffect(() => {
