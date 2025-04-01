@@ -46,17 +46,17 @@ const Projects: React.FC = () => {
       tags: ['React','TypeScript', 'vite', 'Tailwind','API'],
       image: '/images/portifolio-website-placeholder-image.png',
       githubUrl: 'https://github.com/SEWLESEWBIAZEN/minimalist-personal-nook',
-      liveUrl: 'https://example.com',
+      liveUrl: 'https://sewlesewb.netlify.app/',
       featured: true
     },
     {
       id: 4,
-      title: 'E-commerce Platform',
-      description: 'A fully functional online store with cart and checkout features.',
-      tags: ['React', 'Node.js', 'MongoDB'],
-      image: '/placeholder.svg',
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      title: 'HooBank payment gateway SPA',
+      description: 'A full responsive and user friendly payment gatewaye single page application design.',
+      tags: ['React', 'Tailwind', 'HTML5'],
+      image: '/images/hoobank-placeholder-image.png',
+      githubUrl: 'https://github.com/SEWLESEWBIAZEN/hoobank',
+      liveUrl: 'https://pay-better.netlify.app/',
       featured: false
     },
     {
@@ -75,8 +75,8 @@ const Projects: React.FC = () => {
       description: 'A personal finance tool to track income and expenses.',
       tags: ['Node.js', 'Express.js', 'MongoDB'],
       image: '/placeholder.svg',
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/SEWLESEWBIAZEN/expense-tracker-pro',
+      liveUrl: 'Not Hosted!',
       featured: false
     }
   ];

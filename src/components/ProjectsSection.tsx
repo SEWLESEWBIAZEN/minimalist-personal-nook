@@ -38,7 +38,7 @@ const ProjectsSection: React.FC = () => {
       description: 'A website to showcase my works, which is the website you are browsing right now.',
       tags: ['React', 'API', 'Tailwind CSS'],
       githubUrl: 'https://github.com/SEWLESEWBIAZEN/minimalist-personal-nook',
-      liveUrl: 'https://example.com'
+      liveUrl: 'https://sewlesewb.netlify.app/'
     }
   ];
 
