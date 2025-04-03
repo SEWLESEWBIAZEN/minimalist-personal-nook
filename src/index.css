@@ -90,3 +90,20 @@
 .container-content {
   @apply w-full max-w-5xl mx-auto px-4 sm:px-6;
 }
+
+.tiptap {
+  :first-child {
+    margin-top: 0;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    margin: 1.5rem 0;
+    max-width: 100%;
+
+    &.ProseMirror-selectednode {
+      outline: 3px solid var(--purple);
+    }
+  }
+}
