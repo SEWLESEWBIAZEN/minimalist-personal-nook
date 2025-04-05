@@ -9,7 +9,7 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
-import Blog from "./pages/Blog";
+import Blog from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost"; // New component for individual posts
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";

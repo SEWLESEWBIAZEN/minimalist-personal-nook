@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 import AddProjectForm from './admin/Project';
 import { getAllProjects } from '@/lib/actions/projects';
+import ImagePreview from '@/components/ImagePreview';
+import Loading from '@/components/Loading';
+import Nothing from '@/components/Nothing';
 
 interface Project {
   id: number;
@@ -20,14 +23,16 @@ interface Project {
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchProjects = async () => {
       const fetchedProjects = await getAllProjects();
-      setProjects(fetchedProjects.data)     
+      setProjects(fetchedProjects.data)
+      setIsLoading(false)
     }
     fetchProjects();
-    
+
   }, [])
 
   // Get all unique tags
@@ -50,7 +55,7 @@ const Projects: React.FC = () => {
             Each project represents a unique challenge and solution.
           </p>
         </div>
-        <div className=''><AddProjectForm/></div>
+        <div className=''><AddProjectForm /></div>
       </div>
       {/* Filter Buttons */}
       <div className="flex flex-wrap gap-2 mb-8">
@@ -75,15 +80,12 @@ const Projects: React.FC = () => {
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-       
+
         {filteredProjects?.map((project) => (
           <Card key={project.id} className="overflow-hidden hover:shadow-md transition-shadow">
             <div className="h-48 bg-secondary flex items-center justify-center">
-              <img
-                src={project.image !== "" ? project.image : "/placeholder.svg"}
-                alt={project.title}
-                className="w-full h-full object-cover cursor-pointer"
-              />
+              <ImagePreview src={project.image} />
+
             </div>
             <CardHeader>
               <CardTitle>{project.title}</CardTitle>
@@ -126,17 +128,11 @@ const Projects: React.FC = () => {
           </Card>
         ))}
       </div>
-      {filteredProjects.length === 0 && (
-        <div className="text-center py-16">
-          <p className="text-muted-foreground">No projects found with the selected filter.</p>
-          <Button
-            variant="link"
-            onClick={() => setFilter(null)}
-            className="mt-2"
-          >
-            Clear filter
-          </Button>
-        </div>
+      {filteredProjects.length === 0 && !isLoading && (
+       <Nothing content='projects' clearFunc={()=>setFilter(null)}/>
+      )}
+      {isLoading && (
+       <Loading content="projects"/>
       )}
     </div>
   );

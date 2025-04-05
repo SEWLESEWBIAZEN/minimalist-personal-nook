@@ -82,15 +82,13 @@ const AddProjectForm = () => {
 
             const { data, error } = await addProject(newProject);
             
+            
             if (error) throw error;
             
             toast.success("Project Added Successfully!");
             resetForm();
             setIsDialogOpen(false);
-            return {
-                error:error.message,
-                data:data
-            }
+           
         } catch (error) {
             toast.error("Error occurred while adding new project!");
             console.error('Submission error:', error);
@@ -140,7 +138,7 @@ const AddProjectForm = () => {
                     <h2 className='text-[14px]'>Add Project</h2>
                 </button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className='h-full overflow-y-auto'>
                 <form onSubmit={handleSubmit}>
                     <DialogTitle>Add New Project</DialogTitle>
                     <DialogDescription>New projects here and viewers can have a look at it.</DialogDescription>
@@ -280,7 +278,7 @@ const AddProjectForm = () => {
                             {isSubmitting ? 'Adding...' : 'Add Project'}
                         </Button>
                     </div>
-                </form>
+                </form>              
             </DialogContent>
         </Dialog>
     );

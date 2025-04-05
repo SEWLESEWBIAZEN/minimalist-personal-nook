@@ -42,7 +42,7 @@ const AddBlogForm = () => {
             resetForm();
             setIsDialogOpen(false);
             return {
-                error: error.message,
+                error: error?.message,
                 data: data
             }
         } catch (error) {
@@ -80,7 +80,6 @@ const AddBlogForm = () => {
     const handleInputChange = (field: keyof typeof formData) => (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData(prev => ({ ...prev, [field]: e.target.value }));
     };
-
     return (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
@@ -92,7 +91,7 @@ const AddBlogForm = () => {
                     <h2 className='text-[14px]'>Add Blog</h2>
                 </button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className='h-full overflow-y-auto'>
                 <form onSubmit={handleSubmit}>
                     <DialogTitle>Add New Blog</DialogTitle>
                     <DialogDescription>New blogs here and viewers can have a look at it.</DialogDescription>

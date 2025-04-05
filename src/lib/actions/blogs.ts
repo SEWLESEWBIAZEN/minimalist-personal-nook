@@ -66,7 +66,7 @@ export const getBlogPost = async (slug: string): Promise<{
 
     return {
       error: null,
-      data: data as BlogProps
+      data: data
     };
   } catch (error) {
     console.error('Error fetching blog post:', error);

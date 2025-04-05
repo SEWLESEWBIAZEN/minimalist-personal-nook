@@ -27,3 +27,8 @@ export interface Blog {
     slug: string;
     created_at: string;  
   }
+
+  export interface NothingPageProps{
+    content:string;
+    clearFunc:()=>void;
+  }
