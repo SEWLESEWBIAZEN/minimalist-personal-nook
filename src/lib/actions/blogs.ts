@@ -32,8 +32,7 @@ export const getAllBlogs = async () => {
   try {
     const { data, error } = await supabase
       .from('blogs')
-      .select('*');  // Use .select() instead of .collect()
-
+      .select('*'); 
     if (error) throw error;
 
     return {

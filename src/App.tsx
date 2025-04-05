@@ -4,16 +4,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/context/ThemeContext";
-
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
-import Blog from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost"; // New component for individual posts
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-
+import Blogs from "./pages/Blogs";
 
 // Configure React Query
 const queryClient = new QueryClient({
@@ -44,7 +42,7 @@ const App = () => {
                 
                 {/* Blog Routes */}
                 <Route path="/blog">
-                  <Route index element={<Blog />} />
+                  <Route index element={<Blogs/>} />
                   <Route path=":slug" element={<BlogPost />} />
                 </Route>
                 

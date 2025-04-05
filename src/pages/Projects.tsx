@@ -8,6 +8,8 @@ import { getAllProjects } from '@/lib/actions/projects';
 import ImagePreview from '@/components/ImagePreview';
 import Loading from '@/components/Loading';
 import Nothing from '@/components/Nothing';
+import ImageStack from '@/components/ImageStack';
+import ImageStackWithPreview from '@/components/ImagePreviewWithStack';
 
 interface Project {
   id: number;
@@ -20,7 +22,8 @@ interface Project {
   featured: boolean;
 }
 
-const Projects: React.FC = () => {
+const Projects: React.FC = () => { 
+
   const [filter, setFilter] = useState<string | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true)
@@ -80,12 +83,19 @@ const Projects: React.FC = () => {
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
         {filteredProjects?.map((project) => (
           <Card key={project.id} className="overflow-hidden hover:shadow-md transition-shadow">
             <div className="h-48 bg-secondary flex items-center justify-center">
-              <ImagePreview src={project.image} />
-
+              <ImageStackWithPreview
+                cardsData={[
+                  { id: 3, img: "/placeholder.svg", alt: "Placeholder image" },
+                  { id: 2, img: "/images/patients-dashboard-placeholder-image.png", alt: "Patients Dashboard" },
+                  { id: 1, img: project.image, alt: "Hoobank" }
+                ]}
+                cardDimensions={{ width: 350, height: 180 }}
+                previewWidth={800}
+                previewHeight={600}
+              />
             </div>
             <CardHeader>
               <CardTitle>{project.title}</CardTitle>
@@ -129,10 +139,10 @@ const Projects: React.FC = () => {
         ))}
       </div>
       {filteredProjects.length === 0 && !isLoading && (
-       <Nothing content='projects' clearFunc={()=>setFilter(null)}/>
+        <Nothing content='projects' clearFunc={() => setFilter(null)} />
       )}
       {isLoading && (
-       <Loading content="projects"/>
+        <Loading content="projects" />
       )}
     </div>
   );

@@ -8,7 +8,7 @@ interface ImagePreviewProps {
   alt?: string;
   width?: number;
   height?: number;
-  className?: string;
+  className?: string; 
 }
 
 export default function ImagePreview({

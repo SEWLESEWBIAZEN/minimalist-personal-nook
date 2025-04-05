@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ClickSpark from './Spark';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ const Navbar: React.FC = () => {
     { name: 'Projects', href: '/projects' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
-   
+
   ];
 
   useEffect(() => {
@@ -33,28 +34,47 @@ const Navbar: React.FC = () => {
   }, [location]);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-background/90 backdrop-blur-lg shadow-sm' : 'bg-transparent'
-    }`}>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/90 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+      }`}>
       <div className="container-content flex items-center justify-between h-16">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="font-bold text-xl tracking-tight hover:text-primary transition-colors"
         >
-          Sewlesew
+          <ClickSpark
+            sparkColor='#fff'
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
+          >
+            {/* Your content here */}
+            Sewlesew
+          </ClickSpark>
+
         </Link>
-        
+
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-6">
           {navigation.map((item) => (
             <Link
               key={item.name}
               to={item.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                }`}
             >
-              {item.name}
+              <ClickSpark
+                sparkColor='#fff'
+                sparkSize={10}
+                sparkRadius={15}
+                sparkCount={8}
+                duration={400}
+              >
+                {item.name}
+
+              </ClickSpark>
+
+
             </Link>
           ))}
           <ThemeToggle />
@@ -63,9 +83,9 @@ const Navbar: React.FC = () => {
         {/* Mobile menu button */}
         <div className="flex items-center md:hidden">
           <ThemeToggle />
-          <Button 
-            variant="ghost" 
-            size="icon" 
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             className="ml-2"
@@ -83,9 +103,8 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 text-base font-medium rounded-md hover:bg-accent ${
-                  location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
-                }`}
+                className={`px-3 py-2 text-base font-medium rounded-md hover:bg-accent ${location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                  }`}
               >
                 {item.name}
               </Link>

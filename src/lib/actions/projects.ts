@@ -34,9 +34,6 @@ export const getAllProjects = async () => {
     const { data, error } = await supabase
       .from('projects')
       .select('*');  // Use .select() instead of .collect()
-
-    if (error) throw error;
-
     return {
       error: null,
       data: data
