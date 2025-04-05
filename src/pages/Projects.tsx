@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,6 +9,7 @@ import Loading from '@/components/Loading';
 import Nothing from '@/components/Nothing';
 import ImageStack from '@/components/ImageStack';
 import ImageStackWithPreview from '@/components/ImagePreviewWithStack';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface Project {
   id: number;
@@ -22,7 +22,7 @@ interface Project {
   featured: boolean;
 }
 
-const Projects: React.FC = () => { 
+const Projects: React.FC = () => {
 
   const [filter, setFilter] = useState<string | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
@@ -86,16 +86,36 @@ const Projects: React.FC = () => {
         {filteredProjects?.map((project) => (
           <Card key={project.id} className="overflow-hidden hover:shadow-md transition-shadow">
             <div className="h-48 bg-secondary flex items-center justify-center">
-              <ImageStackWithPreview
-                cardsData={[
-                  { id: 3, img: "/placeholder.svg", alt: "Placeholder image" },
-                  { id: 2, img: "/images/patients-dashboard-placeholder-image.png", alt: "Patients Dashboard" },
-                  { id: 1, img: project.image, alt: "Hoobank" }
-                ]}
-                cardDimensions={{ width: 350, height: 180 }}
-                previewWidth={800}
-                previewHeight={600}
-              />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div>
+                      <ImageStackWithPreview
+                        cardsData={[
+                          { id: 3, img: "/placeholder.svg", alt: "Placeholder image" },
+                          { id: 2, img: "/images/patients-dashboard-placeholder-image.png", alt: "Patients Dashboard" },
+                          {
+                            id: 1,
+                            img: project?.image || '/placeholder.svg',
+                            alt: project?.title ?? "Project Image"  // Added proper alt text fallback
+                          }
+                        ]}
+                        cardDimensions={{ width: 350, height: 180 }}
+                        previewWidth={800}
+                        previewHeight={600}
+                        // Optional additional props:
+                        randomRotation={true}
+                        sensitivity={180}
+                        sendToBackOnClick={false}
+                      />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent className='dark:bg-slate-100 dark:text-slate-800  text-slate-50 bg-slate-800'>
+                    <p>Drag to left to see all screenshoot of the project out of the stack.</p>
+                    <p>Click on the image to enlarge/preview.</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
             <CardHeader>
               <CardTitle>{project.title}</CardTitle>

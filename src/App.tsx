@@ -28,11 +28,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <TooltipProvider delayDuration={300}>
-          {/* Toast Notifications */}
+        <TooltipProvider delayDuration={300}>         
           <Toaster />
-          <Sonner position="top-right" richColors closeButton />
-          
+          <Sonner position="top-right" richColors closeButton />          
           <BrowserRouter>
             <Layout>
               <Routes>

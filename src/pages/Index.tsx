@@ -8,6 +8,7 @@ import BlogSection from '@/components/BlogSection';
 import ContactSection from '@/components/ContactSection';
 import RotatingText from '@/components/RotatingText';
 import CountUp from '@/components/CounterUp';
+import LetterGlitch from '@/components/LetterGlitch';
 
 
 const Index: React.FC = () => {
@@ -21,8 +22,20 @@ const Index: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="flex items-center justify-center min-h-screen bg-secondary/20 relative">
-        <div className="container-content text-center md:text-left">
+
+      <section className="flex items-center justify-center min-h-screen bg-secondary/20 relative overflow-hidden">
+        <div className="absolute inset-0 w-full h-full -z-10 backdrop-blur-sm">
+          <div className="absolute inset-0 backdrop-blur-[100px]">
+            <LetterGlitch
+              glitchColors={['#64748b', '#cffafe', '#a8a29e']}
+              glitchSpeed={50}
+              centerVignette={true}
+              outerVignette={false}
+              smooth={true}             
+            />
+          </div>
+        </div>
+        <div className="container-content text-center md:text-left relative z-10">
           <div className="max-w-3xl mx-auto md:mx-0">
             <h1 className="mb-4 animate-slide-in">
               <div className='flex flex-row gap-2 items-center text-[40px] text-nowrap flex-wrap'>
