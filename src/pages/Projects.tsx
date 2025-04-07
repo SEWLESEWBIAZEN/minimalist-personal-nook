@@ -13,7 +13,7 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  image: string;
+  image: string[];
   githubUrl: string | null;
   liveUrl: string | null;
   featured: boolean;
@@ -29,6 +29,7 @@ const Projects: React.FC = () => {
     const fetchProjects = async () => {
       const fetchedProjects = await getAllProjects();
       setProjects(fetchedProjects.data)
+      
       setIsLoading(false)
     }
     fetchProjects();
@@ -88,15 +89,7 @@ const Projects: React.FC = () => {
                   <TooltipTrigger asChild>
                     <div>
                       <ImageStackWithPreview
-                        cardsData={[
-                          { id: 3, img: "/placeholder.svg", alt: "Placeholder image" },
-                          { id: 2, img: "/images/patients-dashboard-placeholder-image.png", alt: "Patients Dashboard" },
-                          {
-                            id: 1,
-                            img: project?.image || '/placeholder.svg',
-                            alt: project?.title ?? "Project Image"  // Added proper alt text fallback
-                          }
-                        ]}
+                        cardsData={project?.image?.map((img:string,index:number)=>({id:index+1,img:img,alt:"placeholder image"}))}
                         cardDimensions={{ width: 350, height: 180 }}
                         previewWidth={800}
                         previewHeight={600}

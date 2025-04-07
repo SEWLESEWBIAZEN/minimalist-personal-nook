@@ -3,7 +3,7 @@ export interface Project {
     title: string;
     description: string;
     tags: string[];
-    image: string | null;
+    image: string[] | null;
     githubUrl: string | null;
     liveUrl: string | null;
     featured: boolean;
@@ -31,4 +31,8 @@ export interface Blog {
   export interface NothingPageProps{
     content:string;
     clearFunc:()=>void;
+  }
+
+  export interface ExpandableCardProps{
+    
   }

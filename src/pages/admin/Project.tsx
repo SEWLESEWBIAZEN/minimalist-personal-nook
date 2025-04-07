@@ -14,61 +14,57 @@ const AddProjectForm = () => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
-        placeholder: '',
+        placeholder: [] as string[],
         tags: [] as string[],
         liveUrl: '',
         githubUrl: '',
         featuredValue: 0,
         inputValue: '',
     });
-    
-    const [file, setFile] = useState<File | null>(null);
+    const [files, setFiles] = useState<File[]>([]);
     const [isUploading, setIsUploading] = useState(false);
     const [uploadError, setUploadError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUploadError(null);
-        if (e.target.files?.[0]) {
-            setFile(e.target.files[0]);
+        if (e.target.files?.length) {
+            setFiles(Array.from(e.target.files));
         }
     };
-
     const handleUpload = async () => {
-        if (!file) {
-            setUploadError('Please select a file');
+        if (files.length === 0) {
+            setUploadError('Please select files');
             return;
         }
-
         setIsUploading(true);
         setUploadError(null);
-
         try {
-            const fileName = `${Date.now()}-${file.name}`;
-            const { data, error } = await supabase.storage
-                .from('images')
-                .upload(`placeholder/${fileName}`, file);
-
-            if (error) throw error;
-
-            const { data: { publicUrl } } = supabase.storage
-                .from('images')
-                .getPublicUrl(data.path);
-                
-            setFormData(prev => ({ ...prev, placeholder: publicUrl }));
+            const uploadPromises = files.map(async (file) => {
+                const fileName = `${Date.now()}-${file.name}`;
+                const { data, error } = await supabase.storage
+                    .from('images')
+                    .upload(`placeholder/${fileName}`, file);
+                if (error) throw error;
+                const { data: { publicUrl } } = supabase.storage
+                    .from('images')
+                    .getPublicUrl(data.path);
+                return publicUrl;
+            });
+            const uploadedUrls = await Promise.all(uploadPromises);
+            // Store all URLs if needed
+            setFormData(prev => ({ ...prev, placeholder: uploadedUrls }));
         } catch (error) {
             console.error('Upload error:', error);
-            setUploadError('Failed to upload image');
+            setUploadError('Failed to upload images');
         } finally {
             setIsUploading(false);
-            setFile(null);
+            setFiles([]);
         }
     };
-
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);        
+        setIsSubmitting(true);
         try {
             const newProject: Project = {
                 title: formData.title,
@@ -79,16 +75,11 @@ const AddProjectForm = () => {
                 tags: formData.tags,
                 image: formData.placeholder
             };
-
             const { data, error } = await addProject(newProject);
-            
-            
             if (error) throw error;
-            
             toast.success("Project Added Successfully!");
             resetForm();
             setIsDialogOpen(false);
-           
         } catch (error) {
             toast.error("Error occurred while adding new project!");
             console.error('Submission error:', error);
@@ -96,21 +87,19 @@ const AddProjectForm = () => {
             setIsSubmitting(false);
         }
     };
-
     const resetForm = () => {
         setFormData({
             title: '',
             description: '',
-            placeholder: '',
+            placeholder: [],
             tags: [],
             liveUrl: '',
             githubUrl: '',
             featuredValue: 0,
             inputValue: '',
         });
-        setFile(null);
+        setFiles([]);
     };
-
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && formData.inputValue.trim()) {
             e.preventDefault();
@@ -123,15 +112,13 @@ const AddProjectForm = () => {
             }
         }
     };
-
     const handleInputChange = (field: keyof typeof formData) => (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData(prev => ({ ...prev, [field]: e.target.value }));
     };
-
     return (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-                <button 
+                <button
                     className='flex flex-row px-4 py-2 rounded text-nowrap mb-4 md:mb-0 cursor-pointer items-center justify-end text-slate-400 hover:bg-slate-50 hover:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-slate-800'
                 >
                     <Plus />
@@ -153,7 +140,6 @@ const AddProjectForm = () => {
                             required
                         />
                     </div>
-
                     <div className='flex flex-col justify-start gap-2 my-6'>
                         <Label>Description*</Label>
                         <Input
@@ -164,7 +150,6 @@ const AddProjectForm = () => {
                             required
                         />
                     </div>
-
                     <div className='flex flex-col justify-start gap-2 my-6'>
                         <Label>Github URL</Label>
                         <Input
@@ -174,7 +159,6 @@ const AddProjectForm = () => {
                             onChange={handleInputChange('githubUrl')}
                         />
                     </div>
-
                     <div className='flex flex-col justify-start gap-2 my-6'>
                         <Label>Live URL</Label>
                         <Input
@@ -184,7 +168,6 @@ const AddProjectForm = () => {
                             onChange={handleInputChange('liveUrl')}
                         />
                     </div>
-
                     <div className="flex flex-wrap gap-2 items-center my-6">
                         {formData.tags.map((tag, index) => (
                             <span key={index} className="bg-gray-200 px-2 py-1 rounded-full text-sm flex items-center">
@@ -201,7 +184,6 @@ const AddProjectForm = () => {
                                 </button>
                             </span>
                         ))}
-
                         {formData.tags.length > 1 && (
                             <button
                                 type="button"
@@ -211,7 +193,6 @@ const AddProjectForm = () => {
                                 Clear all
                             </button>
                         )}
-
                         <Input
                             type="text"
                             value={formData.inputValue}
@@ -221,22 +202,24 @@ const AddProjectForm = () => {
                             className="flex-1 min-w-[200px]"
                         />
                     </div>
-
                     <div className='flex flex-col justify-start items-start gap-2 my-6'>
                         <Label>Placeholder image</Label>
                         <Input
                             type='file'
                             accept='image/*'
+                            multiple
                             className='cursor-pointer'
                             onChange={handleFileChange}
                             disabled={isUploading}
                         />
-
-                        {file && (
-                            <div className='w-full flex justify-end'>
-                                <button 
+                        {files.length > 0 && (
+                            <div className='w-full flex justify-between items-center'>
+                                <span className='text-sm text-muted-foreground'>
+                                    {files.length} file(s) selected
+                                </span>
+                                <button
                                     type="button"
-                                    className='px-3 py-2 rounded hover:bg-slate-50 text-[12px] font-semibold' 
+                                    className='px-3 py-2 rounded hover:bg-slate-50 text-[12px] font-semibold'
                                     onClick={handleUpload}
                                     disabled={isUploading}
                                 >
@@ -244,16 +227,13 @@ const AddProjectForm = () => {
                                 </button>
                             </div>
                         )}
-
                         {uploadError && (
                             <p className='text-xs text-red-500'>{uploadError}</p>
                         )}
-
                         {formData.placeholder && (
                             <div className='text-green-600 text-[12px]'>Image uploaded!</div>
                         )}
                     </div>
-
                     <div className='flex items-center gap-2 my-6'>
                         <Switch
                             id="featured-switch"
@@ -265,11 +245,10 @@ const AddProjectForm = () => {
                         />
                         <Label htmlFor="featured-switch">Featured Project</Label>
                     </div>
-
                     <div className='flex flex-row w-full items-center justify-between'>
-                        <button 
+                        <button
                             type="button"
-                            className='font-semibold' 
+                            className='font-semibold'
                             onClick={() => setIsDialogOpen(false)}
                         >
                             Cancel
@@ -278,10 +257,9 @@ const AddProjectForm = () => {
                             {isSubmitting ? 'Adding...' : 'Add Project'}
                         </Button>
                     </div>
-                </form>              
+                </form>
             </DialogContent>
         </Dialog>
     );
 };
-
 export default AddProjectForm;

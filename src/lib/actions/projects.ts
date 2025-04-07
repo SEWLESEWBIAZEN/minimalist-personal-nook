@@ -5,6 +5,7 @@ import  supabase  from '../utils/supabase'
 
 
 export const addProject= async(project:Project)=>{
+  
   try{
     const { data, error } = await supabase
       .from('projects')
