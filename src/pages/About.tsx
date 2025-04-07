@@ -73,7 +73,7 @@ const About: React.FC = () => {
               <li>React / Next.js</li>
               <li>HTML5 / CSS3 / Tailwind</li>
               <li>Node.js / Express</li>
-              <li>.Net Core / C#</li>
+              <li>.Net Core / C#</li>                            
               <li>Git / GitHub</li>
               <li>Azure Devops</li>
               <li>UI/UX Design principles</li>

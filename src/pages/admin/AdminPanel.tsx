@@ -5,9 +5,10 @@ const AdminPanel = () => {
     return (
         <div className="container-content py-16">
             <div><AddBlogForm /></div>
-            <div className=''><AddProjectForm /></div>
+            <div className=''>
+                <AddProjectForm />
+            </div>
         </div>
     )
 }
-
 export default AdminPanel
