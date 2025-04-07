@@ -12,6 +12,7 @@ import BlogPost from "./pages/BlogPost"; // New component for individual posts
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Blogs from "./pages/Blogs";
+import AdminPanel from "./pages/admin/AdminPanel";
 
 // Configure React Query
 const queryClient = new QueryClient({
@@ -48,6 +49,9 @@ const App = () => {
                 
                 {/* Error Handling */}
                 <Route path="*" element={<NotFound />} />
+
+                {/* admin panel */}
+                <Route path="/en/admin" element={<AdminPanel/>}/>
               </Routes>
             </Layout>
           </BrowserRouter>

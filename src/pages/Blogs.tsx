@@ -70,7 +70,7 @@ const Blogs: React.FC = () => {
             </p>
 
           </div>
-          <div><AddBlogForm /></div>
+    
         </div>
 
       </header>

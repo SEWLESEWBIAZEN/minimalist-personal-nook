@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
-import AddProjectForm from './admin/Project';
 import { getAllProjects } from '@/lib/actions/projects';
-import ImagePreview from '@/components/ImagePreview';
 import Loading from '@/components/Loading';
 import Nothing from '@/components/Nothing';
-import ImageStack from '@/components/ImageStack';
 import ImageStackWithPreview from '@/components/ImagePreviewWithStack';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -58,7 +55,7 @@ const Projects: React.FC = () => {
             Each project represents a unique challenge and solution.
           </p>
         </div>
-        <div className=''><AddProjectForm /></div>
+        
       </div>
       {/* Filter Buttons */}
       <div className="flex flex-wrap gap-2 mb-8">
