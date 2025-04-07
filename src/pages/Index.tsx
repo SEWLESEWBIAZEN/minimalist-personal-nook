@@ -38,7 +38,7 @@ const Index: React.FC = () => {
         <div className="container-content text-center md:text-left relative z-10">
           <div className="max-w-3xl mx-auto md:mx-0">
             <h1 className="mb-4 animate-slide-in">
-              <div className='flex flex-row gap-2 items-center text-[40px] text-nowrap flex-wrap'>
+              <div className='flex flex-row gap-2 items-center  text-[40px] text-nowrap flex-wrap'>
                 Hi, I'm <span className="text-primary">Sewlesew</span>.
                 <RotatingText
                   texts={['FULLSTACK', 'REACT', 'NEXT.JS', 'MERN', '.NET']}
@@ -53,7 +53,7 @@ const Index: React.FC = () => {
                   rotationInterval={3000}
                 />
                 <div>Developer with</div>
-                <div className='dark:text-slate-300 text-slate-600 rounded-lg uppercase'>
+                <div className='dark:text-slate-300 text-slate-600 rounded-lg uppercase text-[26px] sm:text-[30px] md:text-[40px]'>
                   <CountUp
                     from={0}
                     to={3}
@@ -85,7 +85,6 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-
       {/* Other Sections */}
       <AboutSection />
       <ProjectsSection />
