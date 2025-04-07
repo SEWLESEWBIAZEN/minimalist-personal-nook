@@ -6,7 +6,6 @@ const AdminPanel = () => {
         <div className="container-content py-16">
             <div><AddBlogForm /></div>
             <div className=''><AddProjectForm /></div>
-
         </div>
     )
 }
