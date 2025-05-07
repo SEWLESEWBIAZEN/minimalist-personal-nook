@@ -60,7 +60,7 @@ const About: React.FC = () => {
             I believe in continuous learning and sharing knowledge with the developer community.
           </p>
 
-          <a href="/resumes/Resume_Sewlesew_Biazen_Updated.PDF" download className="inline-block">
+          <a href="/resumes/Sewlesew_Biazen_Resume_Updated_2025.PDF" download className="inline-block">
             <Button>Download Resume</Button>
           </a>
         </div>
